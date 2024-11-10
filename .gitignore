@@ -1,1 +1,6 @@
-chromedata/
+videos/
+dqn_eval_logs/
+dqn_best_model/
+eval_logs/
+models/
+best_model/

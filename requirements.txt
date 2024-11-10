@@ -1,0 +1,15 @@
+numpy
+matplotlib
+torch
+tqdm
+ale-py
+shimmy
+gymnasium[atari]
+renderlab
+moviepy==0.2.3.5
+imageio==2.4.1
+ffmpeg
+xvfbwrapper
+colabgymrender
+stable-baselines3
+AutoROM
