@@ -19,26 +19,26 @@ for item in os.listdir(curr_dir):
         fig, ax1 = plt.subplots()
 
         # Plot the first line on ax1
-        ax1.plot([t/10000 for t in data['timesteps']], [sum(r)/len(r) for r in data['results']], 'k-', label='results')  # Green line
-        ax1.set_xlabel('time (ms)')
-        ax1.set_ylabel('results', color='k')
+        rline, = ax1.plot([t/10000 for t in data['timesteps']], [sum(r)/len(r) for r in data['results']], 'k-', label='Reward')  # Green line
+        ax1.set_xlabel('Time (ms)')
+        ax1.set_ylabel('Reward', color='k')
         ax1.tick_params(axis='y', labelcolor='k')
 
         # Create a second y-axis sharing the same x-axis
         ax2 = ax1.twinx()
 
         # Plot the second line on ax2
-        ax2.plot([t/10000 for t in data['timesteps']], [sum(d)/len(d) for d in data['ep_lengths']], color='gray', linestyle='--', label='episode length')  # Blue dashed line
-        ax2.set_ylabel('episode length', color='gray')
+        eline, = ax2.plot([t/10000 for t in data['timesteps']], [sum(d)/len(d) for d in data['ep_lengths']], color='gray', linestyle='--', label='Episode Length')  # Blue dashed line
+        ax2.set_ylabel('Episode Length', color='gray')
         ax2.tick_params(axis='y', labelcolor='gray')
 
 
         plt.title('Episode Length and Results vs Time (ms)')
         fig.tight_layout()
-        plt.legend()
+        plt.legend([rline, eline], [l.get_label() for l in [rline, eline]])
         fname = f"Graph_{item}"
         fig.savefig(fname)
-        cleanup_content += """rm -rf """+fname+""".png\nsleep 1.25\necho """+fname+""" cleared...\n"""
+        cleanup_content += """rm -rf """+fname+""".png\necho """+fname+""" cleared...\n"""
 
         for d in lst:
             print(f"{fname}: {len(data[d])} {d}")
