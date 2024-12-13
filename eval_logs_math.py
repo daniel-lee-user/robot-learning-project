@@ -38,7 +38,7 @@ try:
         'k-', 
         label='Reward'
     )  # Black line
-    ax1.set_xlabel('Timesteps')
+    ax1.set_xlabel('Timestep')
     ax1.set_ylabel('Reward', color='k')
     ax1.tick_params(axis='y', labelcolor='k')
 
@@ -57,7 +57,7 @@ try:
     ax2.tick_params(axis='y', labelcolor='gray')
 
     # Add title and legend
-    plt.title('Episode Length and Results vs Timesteps')
+    plt.title('Episode Length and Results vs Timestep')
     fig.tight_layout()
     plt.legend([rline, eline], [l.get_label() for l in [rline, eline]])
 
